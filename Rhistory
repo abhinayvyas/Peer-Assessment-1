@@ -1,0 +1,88 @@
+q()
+install.packages("ytml")
+install.packages("yaml")
+install.packages("htmltools")
+install.packages("caTools")
+mean(x)
+setwd("C:\Users\Admin\Desktop\assignments\repdata-data-activity")
+setwd("C:\\Users\\Admin\\Desktop\\assignments\\repdata-data-activity")
+data.frame<-read.csv("activity.csv",Colclasses="numeric","character","numeric")
+data.frame<-read.csv("activity.csv",Colclasses=c("numeric","character","numeric"))
+data.frame<-read.csv("activity.csv",colClasses=c("numeric","character","numeric"))
+datatemp<-data.frame(na.rm=T)
+View(datatemp)
+datatemp<-data.frame[complete.cases(data.frame),]
+View(datatemp)
+View(datatemp)
+hist(datatemp$steps)
+mean(datatemp$steps)
+median(datatemp$steps)
+str(apply)
+str(split)
+split(datatemp,datatemp$date)
+s<-split(datatemp,datatemp$date)
+str(sapply)
+usefuld<-sapply(s$steps,sum)
+s$steps
+sapply(s$steps,print)
+tapply(s$steps,print)
+sapply(s$steps,sum)
+str(aggregate)
+Stepssum <- aggregate(steps ~ date, data = data.frame, sum,)
+Stepssum <- aggregate(steps ~ date, data = data.frame, sum)
+hist(stepssum)
+hist(Stepssum)
+hist(Stepssum$steps)
+mean(Stepssum$steps)
+median(Stepssum$steps)
+hist(Stepssum$steps,col="Blue")
+View(datatemp)
+View(Stepssum)
+str(tapply)
+dailymean<-tapplt(data.frame$steps,data.frame$interval,mean)
+dailymean<-tapply(data.frame$steps,data.frame$interval,mean)
+plot(row.names(dailymean),dailymean,type="1",main="Average Daily Activity Pattern",xlab="5-min Intervals",ylab= "Average Activity")
+dailymean<-tapply(data.frame$steps,data.frame$interval,mean,na.rm=T)
+plot(row.names(dailymean),dailymean,type="1",main="Average Daily Activity Pattern",xlab="5-min Intervals",ylab= "Average Activity")
+plot(row.names(dailymean),dailymean,type="l",main="Average Daily Activity Pattern",xlab="5-min Intervals",ylab= "Average Activity")
+MAX_Interval=which.max(data.frame$steps)
+MAX_Interval=which.max(dailymean)
+print(MAX_Interval)
+missing values<-nrow(data.frame)-nrow(datatemp)
+missingvalues<-nrow(data.frame)-nrow(datatemp)
+View(data.frame)
+View(Stepssum)
+stepsmean<-Stepsum[,2]
+stepsmean<-Stepssum[,2]
+datatemp2<-data.frame
+for[j in 0:52]
+{for[i in 0:287]
+if(datatemp2$steps[288*j +i]==NA)
+{datatemp2$steps[288*j +i]<-stepsmean[j]}
+}
+for(j in 0:52)
+{for(i in 0:287)
+if(datatemp2$steps[288*j +i]==NA)
+{datatemp2$steps[288*j +i]<-stepsmean[j]}
+}
+for(j in 0:52)
+{for(i in 0:287)
+{if(datatemp2$steps[288*j +i]=="NA")
+{datatemp2$steps[288*j +i]<-stepsmean[j]}
+}
+}
+datatemp2steps<-datatemp2[,1]
+stepsmean<-Stepsum[,2]
+datatemp2steps<-datatemp2[,1]
+for(j in 0:52)
+{for(i in 0:287)
+{if(datatemp2steps[288*j +i]=="NA")
+{datatemp2steps[288*j +i]<-stepsmean[j]}
+}
+}
+for(j in 1:53)
+{for(i in 1:288)
+{if(datatemp2steps[(288*j +i)]=="NA")
+{datatemp2steps[(288*j +i)]<-stepsmean[j]}
+}
+}

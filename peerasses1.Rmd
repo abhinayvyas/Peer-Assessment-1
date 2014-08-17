@@ -1,0 +1,46 @@
+---
+title: "Peer Assesment 1"
+output: html_document
+---
+##Loading and Preprocessing the .csv file 
+```{r loading,echo=TRUE}
+data.frame<-read.csv("activity.csv",colClasses=c("numeric","character","numeric"))
+```
+##What is the total number of mean steps taken everyday?
+```{r mean,echo=T}
+datatemp1<-data.frame[complete.cases(data.frame),]
+Stepssum <- aggregate(steps ~ date, data = datatemp1, sum)
+hist(Stepssum$steps,col="Blue",main="Histogram of mean steps")
+mean(Stepssum$steps)
+median(Stepssum$steps)
+```
+##What is the average daily activity pattern?
+```{r ada,echo=TRUE}
+dailymean<-tapply(data.frame$steps,data.frame$interval,mean,na.rm=T)
+plot(row.names(dailymean),dailymean,type="l",main="Average Daily Activity Pattern",xlab="5-min Intervals",ylab= "Average Activity")
+MAX_Interval=which.max(dailymean)
+print(MAX_Interval)                       
+```
+##Imputing missing values
+```{r imputing values,echo=TRUE}
+missingvalues<-nrow(data.frame)-nrow(datatemp1)
+print(missingvalues)
+datatemp2<-data.frame
+StepsAverage <- aggregate(steps ~ interval,data.frame,mean)
+NAv <- numeric()
+for (i in 1:nrow(data.frame)) {
+obs <- data.frame[i, ]
+if (is.na(obs$steps)) {
+steps <- subset(StepsAverage, interval == obs$interval)$steps
+    } 
+else {2
+        steps <- obs$steps
+     }
+    NAv <- c(NAv, steps)
+}
+datatemp2$steps<-NAv
+Steps2 <- aggregate(steps ~ date,datatemp2, sum, na.rm = TRUE)
+hist(Steps2$steps,col="Red",main="Histogram of Edited Steps")
+mean(Steps2$steps)
+median(Steps2$steps)
+```
